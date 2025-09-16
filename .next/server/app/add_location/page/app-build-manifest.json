@@ -1,0 +1,23 @@
+{
+  "pages": {
+    "/add_location/page": [
+      "static/chunks/91281_next_dist_f7caf190._.js",
+      "static/chunks/civic-cops-frontend_src_app_favicon_ico_mjs_08809c9a._.js",
+      "static/chunks/[root-of-the-server]__9be9e809._.css",
+      "static/chunks/civic-cops-frontend_src_app_layout_tsx_cb1277e0._.js",
+      "static/chunks/91281_next_dist_client_components_builtin_global-error_c2f4126c.js",
+      "static/chunks/civic-cops-frontend_src_app_add_location_ui_MapPicker_tsx_37de0106._.js",
+      "static/chunks/civic-cops-frontend_271a1211._.js",
+      "static/chunks/civic-cops-frontend_src_app_add_location_page_tsx_c2f4126c._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_2f5df069._.js",
+      "static/chunks/91281_next_dist_compiled_react-dom_cce14403._.js",
+      "static/chunks/91281_next_dist_compiled_next-devtools_index_28737b96.js",
+      "static/chunks/91281_next_dist_compiled_c4dd5bb1._.js",
+      "static/chunks/91281_next_dist_client_5b5122b8._.js",
+      "static/chunks/91281_next_dist_bdbf7c31._.js",
+      "static/chunks/91281_@swc_helpers_cjs_bf776103._.js",
+      "static/chunks/civic-cops-frontend_a0ff3932._.js",
+      "static/chunks/turbopack-civic-cops-frontend_b9445a85._.js"
+    ]
+  }
+}
