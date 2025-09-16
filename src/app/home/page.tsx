@@ -1,12 +1,20 @@
 "use client"
 
-import React from "react"
+import React, { Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { IssueCard } from "../components/IssueCard"
 import { BottomNavbar } from "../components/BottomNavBar"
 import { apiFetch, type IssueResponse } from "@/lib/api"
 
-export default function HomePage() {
+export default function HomePageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePage />
+    </Suspense>
+  )
+}
+
+function HomePage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [issues, setIssues] = React.useState<IssueResponse[]>([])
