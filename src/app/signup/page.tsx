@@ -152,7 +152,7 @@ export default function SignupPage() {
       ) : (
         <>
           <p className="text-sm text-gray-600 mb-4">
-            We've sent a 6-digit OTP to +91{formData.phone}
+            We&apos;ve sent a 6-digit OTP to +91{formData.phone}
           </p>
 
           <Input

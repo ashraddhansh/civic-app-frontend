@@ -206,7 +206,7 @@ export default function OtpPage() {
       <h1 className="text-2xl font-bold mb-4">Verify OTP</h1>
       
       <p className="text-sm text-gray-600 mb-8">
-        We've sent a 6-digit OTP to +91{phone}
+        We&apos;ve sent a 6-digit OTP to +91{phone}
       </p>
 
       {/* OTP input boxes */}
