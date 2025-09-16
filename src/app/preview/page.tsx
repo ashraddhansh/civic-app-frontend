@@ -166,7 +166,7 @@ export default function ComplaintPreviewPage() {
       <div className="mb-6 rounded-xl border bg-gray-50 p-3">
         <div className="text-sm font-semibold mb-2">Attached Photos ({storedData.images.length})</div>
         <div className="grid grid-cols-2 gap-2">
-          {storedData.images.map((img, index) => (
+          {storedData.images.map((img: string, index: number) => (
             <img key={index} src={img} alt={`Photo ${index + 1}`} className="w-full rounded-md border" />
           ))}
         </div>
