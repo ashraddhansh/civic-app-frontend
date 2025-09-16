@@ -39,8 +39,12 @@ export default function TrackIssuePage() {
 				setListLoading(true)
 				const data = await apiFetch("/users/my-issues", { method: "GET" })
 				setIssues(Array.isArray(data) ? data : [])
-			} catch (e: any) {
-				setError(e?.message || "Failed to load issues")
+				} catch (e) {
+					if (e instanceof Error) {
+						setError(e.message)
+					} else {
+						setError("Failed to load issues")
+					}
 			} finally {
 				setListLoading(false)
 			}
@@ -53,10 +57,16 @@ export default function TrackIssuePage() {
 			setShowList(false)
 			setLoading(true)
 			setError("")
-			getIssueById(issueId)
-				.then((data) => setIssue(data))
-				.catch((e: Error) => setError(e.message || "Failed to load issue"))
-				.finally(() => setLoading(false))
+				getIssueById(issueId)
+					.then((data) => setIssue(data))
+					.catch((e) => {
+						if (e instanceof Error) {
+							setError(e.message)
+						} else {
+							setError("Failed to load issue")
+						}
+					})
+					.finally(() => setLoading(false))
 		} else {
 			setShowList(true)
 			setLoading(false)
@@ -102,7 +112,7 @@ export default function TrackIssuePage() {
 	const photoUrls: string[] = useMemo(() => {
 		const urls: string[] = []
 		if (issue?.photo_url) urls.push(issue.photo_url)
-		const anyIssue = issue as unknown as { photo_urls?: string[]; additional_photos?: string[] }
+		const anyIssue = issue as { photo_urls?: string[]; additional_photos?: string[]; photo_url?: string }
 		if (anyIssue?.photo_urls?.length) urls.push(...anyIssue.photo_urls.filter(Boolean))
 		if (anyIssue?.additional_photos?.length) urls.push(...anyIssue.additional_photos.filter(Boolean))
 		return Array.from(new Set(urls))
@@ -157,8 +167,8 @@ export default function TrackIssuePage() {
 											className="border rounded-lg p-4 cursor-pointer hover:bg-gray-50 transition-colors flex items-start gap-3"
 											onClick={() => router.push(`/track_issue?id=${item.issue_id}`)}
 										>
-											{(item as any).photo_url ? (
-												<img src={(item as any).photo_url} alt="thumb" className="w-16 h-16 object-cover rounded border" />
+											{('photo_url' in item && item.photo_url) ? (
+												<img src={item.photo_url as string} alt="thumb" className="w-16 h-16 object-cover rounded border" />
 											) : (
 												<div className="w-16 h-16 bg-gray-100 rounded border" />
 											)}

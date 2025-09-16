@@ -109,8 +109,8 @@ export default function MapPicker({ onPick, center, initialCenter }: MapPickerPr
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <ClickHandler onPick={(lat, lng) => { setPosition({ lat, lng }); onPick(lat, lng) }} />
-        {position && <Marker position={position} draggable eventHandlers={{ dragend: (e: any) => {
-          const m = e.target
+        {position && <Marker position={position} draggable eventHandlers={{ dragend: (e: L.LeafletEvent) => {
+          const m = e.target as L.Marker
           const ll = m.getLatLng()
           setPosition({ lat: ll.lat, lng: ll.lng })
           onPick(ll.lat, ll.lng)

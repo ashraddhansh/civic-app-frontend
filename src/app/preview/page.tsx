@@ -129,8 +129,12 @@ export default function ComplaintPreviewPage() {
       } else {
         throw new Error("Failed to create complaint")
       }
-    } catch (e: any) {
-      setError(e?.message || "Failed to submit complaint. Please try again.")
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message)
+      } else {
+        setError("Failed to submit complaint. Please try again.")
+      }
     } finally {
       setSubmitting(false)
     }

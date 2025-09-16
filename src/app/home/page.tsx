@@ -59,8 +59,12 @@ export default function HomePage() {
       setError("")
       const issuesData = await apiFetch("/users/my-issues", { method: "GET" })
       setIssues(Array.isArray(issuesData) ? issuesData : [])
-    } catch (e: any) {
-      setError(e?.message || "Failed to load data")
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message)
+      } else {
+        setError("Failed to load data")
+      }
       setIssues([])
     } finally {
       isFetchingRef.current = false

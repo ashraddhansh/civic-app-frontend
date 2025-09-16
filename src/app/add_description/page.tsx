@@ -104,8 +104,12 @@ export default function AddDescriptionPage() {
 			}
 			// Navigate to pick live location; upload happens there
 			window.location.href = "/add_location"
-		} catch (e: any) {
-			setError(e?.message || "Failed to proceed")
+		   } catch (e) {
+			   if (e instanceof Error) {
+				   setError(e.message)
+			   } else {
+				   setError("Failed to proceed")
+			   }
 		} finally {
 			setSubmitting(false)
 		}
