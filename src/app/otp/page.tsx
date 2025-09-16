@@ -1,10 +1,18 @@
 "use client"
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
-export default function OtpPage() {
+export default function OtpPageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OtpPage />
+    </Suspense>
+  )
+}
+
+function OtpPage() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")

@@ -1,6 +1,6 @@
 "use client"
 import { BottomNavbar } from "../components/BottomNavBar"
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { getIssueById, type IssueResponse, apiFetch } from "@/lib/api"
 
@@ -14,7 +14,15 @@ type IssueListResponse = {
 	location?: string | null
 }
 
-export default function TrackIssuePage() {
+export default function TrackIssuePageWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TrackIssuePage />
+    </Suspense>
+  )
+}
+
+function TrackIssuePage() {
 	const searchParams = useSearchParams()
 	const router = useRouter()
 	const issueId = useMemo(() => searchParams?.get("id"), [searchParams])
