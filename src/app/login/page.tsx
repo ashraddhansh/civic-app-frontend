@@ -140,7 +140,7 @@ export default function LoginPage() {
       ) : (
         <>
           <p className="text-sm text-gray-600 mb-4">
-            We've sent a 6-digit OTP to +91{phone}
+            We&apos;ve sent a 6-digit OTP to +91{phone}
           </p>
 
           {/* OTP input */}
